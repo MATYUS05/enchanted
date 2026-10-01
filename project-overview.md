@@ -103,9 +103,9 @@ Replace with vector (SVG) files when the original design files are available. Do
 
 > **A romantic, elegant florist with a handcrafted, personal touch — presented the way Gen Z browses.**
 
-Three versions exist. All use the same palette, fonts and brand copy; they differ in mood, motifs and how much the visitor does.
+Four versions exist. All use the same palette, fonts and brand copy; they differ in mood, motifs and how much the visitor does.
 
-All three are in `src` for now (`src/v1`, `src/v2`, `src/v3`), and a **V1 / V2 / V3 switch in the navbar** swaps between them. The choice is remembered in the browser (`localStorage`, key `enchanted-design`); v3 is the default. The switch is a comparison tool, not a site feature: once a version is chosen, delete the other folders, `src/components/VersionToggle.jsx`, the switching code in `src/App.jsx`, and the exports, utilities and keyframes in `src/data/site.js` and `src/index.css` that only the removed versions used.
+All four are in `src` for now (`src/v1` to `src/v4`), and a **V1 / V2 / V3 / V4 switch in the navbar** swaps between them. The choice is remembered in the browser (`localStorage`, key `enchanted-design`); v4 is the default. The switch is a comparison tool, not a site feature: once a version is chosen, delete the other folders, `src/components/VersionToggle.jsx`, the switching code in `src/App.jsx`, and the exports, utilities and keyframes in `src/data/site.js` and `src/index.css` that only the removed versions used.
 
 | | v1 "Scrapbook" | v2 "Editorial" | v3 "Playground" |
 | --- | --- | --- | --- |
@@ -119,6 +119,16 @@ All three are in `src` for now (`src/v1`, `src/v2`, `src/v3`), and a **V1 / V2 /
 | Love notes | Photo frames and chat bubbles scattered | One chat thread card + arch gallery | A phone where messages type themselves in; tap a message to ♡ it |
 | Only in this version | Marquee | — | Vibe builder, swipe deck, live order message |
 | Where | `src/v1`, snapshot in `backup/v1-scrapbook/` | `src/v2`, snapshot in `backup/v2-editorial/` | `src/v3`; `backup/v3-playground/` is a snapshot of the whole `src` with all three and the switch |
+
+**v4 "Maison".** Built from reference images the owner supplied (a dark, single-colour floral atelier site and a burgundy boutique landing page). In `src/v4`; `backup/v4-maison/` is a snapshot of the whole `src` with all four and the switch.
+
+- **Two colours only: wine and cream.** No blush, peach, raspberry or gold. Depth comes from darker bands (a black overlay on wine) and cream at low opacity.
+- The rose photo is recoloured to wine with a luminosity blend, so backgrounds stay single-colour.
+- Bold serif headings, small sans text, hairline labels ("— About"), square photo tiles, pill buttons; script only for "Let's Customize!" and the closing line.
+- Hero: bouquet on the rose background with a frosted "glass block" panel over the left half holding the headline. On mobile the panel sits under the bouquet.
+- Photos carry a wine tint and return to full colour on hover or tap.
+- Sections: Hero, About, name ribbon (marquee), What we make (three tiles), Why artificial (frosted panel over roses + three reasons), Gallery (eight looks, names only, no prices), Let's Customize (three cut-out bouquets, one per step, each with a "Customize" button), Love notes (customer chat lines as italic quotes), Closing, Footer.
+- No pick-and-swipe interactivity; this version is the calm, premium one.
 
 **How v3 works.** The page builds the visitor's WhatsApp message as they play:
 
@@ -205,6 +215,9 @@ src/
 │   ├── ui/          Chip, Heading, Reveal
 │   ├── brief.js     Builds the WhatsApp message from the visitor's picks
 │   └── App.jsx      Holds the picks and loved looks
+├── v4/              Maison design
+│   ├── sections/    Hero, Philosophy, Collections, Signature, Gallery, Customize, LoveNotes, Closing
+│   └── ui/          Button, Label, Tinted, Reveal
 ├── components/      VersionToggle (shared navbar switch)
 ├── data/site.js     All copy, links, lists and photo data for all designs
 ├── assets/          img/, fonts/

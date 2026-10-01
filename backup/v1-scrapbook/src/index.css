@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('./assets/fonts/GlacialIndifference-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('./assets/fonts/GlacialIndifference-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme {
+  --color-wine: #5e142f;
+  --color-wine-deep: #551f32;
+  --color-wine-mid: #791b3f;
+  --color-raspberry: #9b1d4d;
+  --color-cream: #fffbf5;
+  --color-peach: #fae8d6;
+  --color-blush: #f7d4cf;
+  --color-gold: #ce933d;
+
+  --font-display: 'The Seasons', 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Luxurious Script', 'Snell Roundhand', cursive;
+  --font-sans: 'Glacial Indifference', Montserrat, system-ui, sans-serif;
+
+  --shadow-photo: 0 0 0 1px rgb(94 20 47 / 0.08), 0 1rem 2.25rem rgb(60 10 30 / 0.22);
+  --drop-shadow-cutout: 0 1.5rem 2rem rgb(30 4 14 / 0.5);
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-turn: turn 20s linear infinite;
+  --animate-sway: sway 7s ease-in-out infinite alternate;
+
+  @keyframes marquee {
+    to {
+      translate: -50% 0;
+    }
+  }
+
+  @keyframes turn {
+    to {
+      rotate: 360deg;
+    }
+  }
+
+  @keyframes sway {
+    from {
+      rotate: 3deg;
+    }
+    to {
+      rotate: 7deg;
+    }
+  }
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @variant md {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility rosy {
+  color: var(--color-cream);
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgb(155 29 77 / 0.85), transparent),
+    linear-gradient(rgb(94 20 47 / 0.9), rgb(94 20 47 / 0.9)),
+    url('./assets/img/roses.webp') center / cover var(--color-wine);
+}
+
+@utility lily-wash {
+  background:
+    linear-gradient(rgb(255 251 245 / 0.82), rgb(255 251 245 / 0.82)),
+    url('./assets/img/lily.webp') right -8rem top -6rem / 38rem no-repeat var(--color-cream);
+}
+
+@utility calla-wash {
+  background:
+    linear-gradient(rgb(255 251 245 / 0.86), rgb(255 251 245 / 0.86)),
+    url('./assets/img/calla.webp') left -3rem bottom -4rem / 17rem no-repeat var(--color-cream);
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@utility headline {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+@utility headline-script {
+  font-family: var(--font-script);
+  font-size: clamp(3.75rem, 12vw, 8.5rem);
+  line-height: 0.9;
+}
+
+@utility lede {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  line-height: 1.35;
+}
+
+@utility pill {
+  border: 1px solid currentColor;
+  border-radius: calc(infinity * 1px);
+  padding: 0.45rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-cream font-sans text-wine-deep antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  em {
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-gold;
+  }
+}
+
+[data-reveal] {
+  transition:
+    opacity 700ms ease,
+    translate 700ms ease;
+}
+
+[data-reveal='hidden'] {
+  opacity: 0;
+  translate: 0 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+
+  [data-reveal] {
+    transition: none;
+    opacity: 1;
+    translate: none;
+  }
+}
